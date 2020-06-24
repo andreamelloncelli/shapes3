@@ -1,4 +1,3 @@
-context("triangle")
 
 test_that("area_triangle works", {
 
@@ -6,7 +5,5 @@ test_that("area_triangle works", {
                6)
 
 })
-
-
 
 

@@ -1,7 +1,8 @@
 ## Create a new package with RStudio
 
 # Package setup -----------------------------------------------------------
-install.packages("usethis")
+
+# install.packages("usethis")
 ## Use version control
 usethis::use_git_config(
   scope = "user",
@@ -44,7 +45,7 @@ usethis::use_testthat()
 # Develop -----------------------------------------------------------------
 
 ## Use test
-devtools::use_test("triangle")
+usethis::use_test("triangle2")
 
 
 ## Add a package
@@ -70,11 +71,11 @@ usethis::use_data_raw( name = "my_dataset", open = FALSE )
 
 ## Tests
 ## Add one line by test you want to create
-usethis::use_test( "hello" )
+# usethis::use_test( "hello" )
 
 ## Vignette
-usethis::use_vignette("ThisTidyPackage")
-devtools::build_vignettes()
+# usethis::use_vignette("ThisTidyPackage")
+# devtools::build_vignettes()
 # Install the package and see it with vignette("ThisTidyPackage")
 
 
