@@ -43,12 +43,17 @@ usethis::use_testthat()
 
 # Develop -----------------------------------------------------------------
 
+## Use test
+devtools::use_test("triangle")
+
+
 ## Add a package
 usethis::use_package( "dplyr" )
 # add it to ROXYGEN or NAMESPACE
 
 ## If you want to use roxygen, enable ROXYGEN in the project.
 # Menu: tools > Project options > build tools > generate the documentation with roxygen
+# install.packages("roxygen2")
 # file.remove("NAMESPACE")
 devtools::document() # to fill NAMESPACE and documentation with ROXYGEN comments
 # or roxygen2::roxygenise() # converts roxygen comments to .Rd files.
