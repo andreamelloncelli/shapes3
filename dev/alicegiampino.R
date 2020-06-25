@@ -46,11 +46,49 @@ for(point_idx in seq_along(points)){
 counter_to_pi(counter, n)
 
 
+# Parallelizziamo:
+
+# MAP
+# Creiamo un ciclo con le iterazioni indipendenti
+are_points_in_circle <- numeric(n)
+
+for(point_idx in seq_along(points)){
+
+  point <- points[[point_idx]]
+
+  are_points_in_circle[[point_idx]] <- in_circle(point)
+
+}
+
+are_points_in_circle
 
 
+# REDUCE
+counter <- 0
+# Non è banalmente parallelizzabile perché ogni iterazione
+# dipende dalla iterazione precedente:
+for(is_point_in_circle in are_points_in_circle){
+
+  counter <- counter + is_point_in_circle
+
+}
+
+counter_to_pi(counter, n)
+
+# lapply ------------------------------------------------------------------
+
+# map:
+are_points_in_circle <- lapply(points, in_circle)
+# oppure
+are_points_in_circle <- purrr::map(points, in_circle)
+
+# reduce:
+counter <- reduce(are_points_in_circle, sum)
+counter_to_pi(counter, n)
 
 
-
-
+map(points, in_circle) %>%
+  reduce(sum) %>%
+  counter_to_pi((n))
 
 
