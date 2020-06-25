@@ -1,7 +1,7 @@
 
 library(purrr)
 
-n <- 10^3
+n <- 10^5
 
 rnd_couple <- function(x) {
   list(x = runif(1, min = -1, max = 1),
@@ -25,9 +25,12 @@ counter_to_pi <- function(count, total) {
 
 # first for-loop ----------------------------------------------------------
 
-...
-
-counter_to_pi(count, n)
+counter <- 0
+for (point_idx in seq_along(points)) {
+  point <- points[[point_idx]]
+  counter <- counter + in_circle(point)
+}
+counter_to_pi(counter, n)
 
 
 
