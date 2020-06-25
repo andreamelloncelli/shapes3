@@ -6,8 +6,8 @@
 ## Use version control
 usethis::use_git_config(
   scope = "user",
-  user.name = "Andrea Melloncelli",
-  user.email = "andrea.melloncelli@gmail.com"
+  user.name = "Vincenzo Nardelli",
+  user.email = "vincnardelli@gmail.com"
 )
 usethis::use_git()
 
@@ -27,7 +27,7 @@ usethis::use_description(
     URL = "https://github.com/vanlog/shapes"
   )
 )
-usethis::use_lgpl_license( name = "Andrea Melloncelli" )  # You can set another license here
+usethis::use_lgpl_license( name = "Vincenzo Nardelli" )  # You can set another license here
 usethis::use_tidy_description()                           # sort fields and packages
 
 ## Common tasks
