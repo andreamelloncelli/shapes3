@@ -10,5 +10,5 @@
 #'
 #' @example # area_triangle(3, 2)
 area_triangle <- function(base, height) {
-  base * height / 2
+  base * height / 5
 }
