@@ -6,7 +6,7 @@
 ## Use version control
 usethis::use_git_config(
   scope = "user",
-  user.name = "Vincenzo Nardelli",
+  user.name = "Vincenzo Nardelli2",
   user.email = "vincnardelli@gmail.com"
 )
 usethis::use_git()
