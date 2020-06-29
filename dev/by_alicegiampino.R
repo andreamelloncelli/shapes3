@@ -53,10 +53,12 @@ map(points, in_circle) %>%
     counter_to_pi(n)
 toc()
 
-cluster <-  makeCluster(parallel::detectCores())
+cluster <-  makeCluster(parallel::detectCores(), type = "SOCK")
 registerDoSNOW(cluster)
 
 getDoParWorkers()
+
+mcOptions <- list(preschedule=T, set.seed=F)
 
 parallel_function <- function(points) {
   r <- foreach( p = iter(points),
@@ -71,26 +73,43 @@ parallel_function <- function(points) {
   }
 
 tic()
-parallel_function(points)
+# parallel_function(points)
 toc()
 
 stopCluster(cluster)
 
+m <- function(n){
+  map(points, in_circle) %>%
+    reduce(`+`) %>%
+    counter_to_pi(n)
+}
+
+g <- function(n){
+  lapply(points, in_circle) %>%
+    unlist() %>%
+    sum() %>%
+    counter_to_pi(n)
+}
+
+f <- function(n){
+  point_in <- list( x = runif(1, min = -1, max = 1),
+        y = runif(1, min = -1, max = 1))
+
+  sum(in_circle(point_in))/n*4
+
+}
 
 bench::mark(
 
   check = F,
 
-  map = map(points, in_circle) %>%
-    reduce(`+`) %>%
-    counter_to_pi(n),
+  map = m(n),
 
-  lapply = lapply(points, in_circle) %>%
-    unlist() %>%
-    sum() %>%
-    counter_to_pi(n),
+  lapply = g(n),
 
   # multi = parallel_function(points)
+
+  point_in = f(n)
 
 ) %>% show_bm()
 
