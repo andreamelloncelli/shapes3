@@ -79,6 +79,8 @@ stopCluster(cluster)
 
 bench::mark(
 
+  check = F,
+
   map = map(points, in_circle) %>%
     reduce(`+`) %>%
     counter_to_pi(n),
