@@ -13,7 +13,6 @@ points=map(seq_len(n),rnd_couple)
 
 # function ----------------------------------------------------------------
 
-#ciao ciao
 in_circle=function(point){
   point$x^2+point$y^2<1
 }
